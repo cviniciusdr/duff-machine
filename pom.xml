@@ -17,6 +17,7 @@
 
 	<properties>
 		<java.version>1.8</java.version>
+		<spring-boot.version>1.5.18.RELEASE</spring-boot.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -52,13 +53,31 @@
 	</dependencies>
 
 	<build>
+		<finalName>${project.artifactId}</finalName>
+
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>${spring-boot.version}</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>com.spotify</groupId>
+				<artifactId>dockerfile-maven-plugin</artifactId>
+				<version>1.4.2</version>
+				<configuration>
+					<repository>cviniciusdr/${project.artifactId}-app</repository>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
-
 
 </project>
