@@ -1,5 +1,7 @@
 package com.cviniciusdr.service.impl;
 
+import static java.util.Objects.isNull;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,7 +11,6 @@ import com.cviniciusdr.exception.NotFoundException;
 import com.cviniciusdr.model.Cerveja;
 import com.cviniciusdr.repository.CervejaRepository;
 import com.cviniciusdr.service.CervejariaService;
-import static java.util.Objects.isNull;
 
 @Service
 public class CervejariaServiceImpl implements CervejariaService {

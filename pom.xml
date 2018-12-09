@@ -83,6 +83,7 @@
 					<repository>cviniciusdr/${project.artifactId}-app</repository>
 				</configuration>
 			</plugin>
+
 		</plugins>
 	</build>
 

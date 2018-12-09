@@ -14,5 +14,4 @@ public interface CervejariaService {
 
 	void deletaCervejaPorId(long id);
 
-
 }
