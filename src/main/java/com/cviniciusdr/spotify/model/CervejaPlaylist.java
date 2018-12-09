@@ -17,12 +17,16 @@ public class CervejaPlaylist {
 	@JsonProperty("beerStyle")
 	private String estilo;
 	
+	@JsonProperty("playlist")
 	private Playlist playlist;
+
+	@JsonProperty("name")
+	private String nome;
 
 	public CervejaPlaylist build(String estilo, String playlistName, List<PlaylistTrack> playlistTracks) {
 		this.estilo = estilo;
+		this.nome = playlistName;
 		this.playlist = new Playlist();
-		this.playlist.setNome(playlistName);
 		
 		List<Musica> musicas = new ArrayList<>();
 		this.playlist.setMusicas(musicas);

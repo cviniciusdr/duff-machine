@@ -13,6 +13,7 @@ public class Musica {
 	@JsonProperty("artist")
 	private String artista;
 	
+	@JsonProperty("link")
 	private String link;
 
 }

@@ -9,10 +9,7 @@ import lombok.Data;
 @Data
 public class Playlist {
 
-	@JsonProperty("name")
-	private String nome;
-	
-	@JsonProperty("name")
+	@JsonProperty("tracks")
 	private List<Musica> musicas;
 	
 }
