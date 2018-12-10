@@ -5,6 +5,7 @@ import static java.util.Objects.isNull;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import com.cviniciusdr.exception.NotFoundException;
@@ -45,7 +46,11 @@ public class CervejariaServiceImpl implements CervejariaService {
 
 	@Override
 	public void deletaCervejaPorId(long id) {
-		repository.delete(id);
+		try {
+			repository.delete(id);
+		}catch (EmptyResultDataAccessException e) {
+			throw new NotFoundException();
+		}
 	}
 	
 }
