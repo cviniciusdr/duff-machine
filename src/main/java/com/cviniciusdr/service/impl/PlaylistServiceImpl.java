@@ -4,7 +4,6 @@ import static org.springframework.util.CollectionUtils.isEmpty;
 
 import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
@@ -47,16 +46,10 @@ public class PlaylistServiceImpl implements PlaylistService {
 			throw new NotFoundException();
 		}
 
-		Double min = listaCervejas.stream()//
-				.mapToDouble(c -> c.getDistancia(temperatura))
-				.min()
-				.orElse(-1);
+		Comparator<Cerveja> comparator = Comparator.comparing((Cerveja c) -> c.getDistancia(temperatura))
+				.thenComparing(Cerveja::getEstilo);
 
-		List<Cerveja> cervejasOrdenadas = listaCervejas.stream()
-				.filter(c -> c.getDistancia(temperatura) == min)
-				.sorted(Comparator.comparing(Cerveja::getEstilo))
-				.collect(Collectors.toList());
-
-		return cervejasOrdenadas.get(0);
+		listaCervejas.sort(comparator);
+		return listaCervejas.get(0);
 	}
 }
